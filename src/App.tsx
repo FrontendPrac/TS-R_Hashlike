@@ -1,5 +1,11 @@
+import Slide from "components/Slide";
+
 function App() {
-  return <>ㅋㅋ</>;
+  return (
+    <>
+      <Slide />
+    </>
+  );
 }
 
 export default App;
