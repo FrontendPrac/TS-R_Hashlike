@@ -9,5 +9,5 @@ declare interface NextArrowProps {
 declare interface PreviousArrowProps {
   className?: string;
   style?: React.CSSProperties;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandle<HTMLDivElement>;
 }

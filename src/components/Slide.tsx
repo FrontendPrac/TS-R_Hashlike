@@ -2,8 +2,10 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useRecoilState } from "recoil";
+import { slideContent } from "recoil/atom";
 
-// 다음 화살표
+// 다음 화살표 컴포넌트
 const NextArrow = (props: NextArrowProps) => {
   const { className, style, onClick } = props;
   return (
@@ -15,7 +17,7 @@ const NextArrow = (props: NextArrowProps) => {
   );
 };
 
-// 이전 화살표
+// 이전 화살표 컴포넌트
 const PreviousArrow = (props: PreviousArrowProps) => {
   const { className, style, onClick } = props;
   return (
@@ -27,7 +29,11 @@ const PreviousArrow = (props: PreviousArrowProps) => {
   );
 };
 
+// 슬라이드 컴포넌트
 const Slide = () => {
+  const [content, setContent] = useRecoilState(slideContent);
+
+  // 슬라이더 커스텀
   const settings = {
     slidesToShow: 1, // 한번에 보이는 슬라이드 갯수
     slidesToScroll: 1, // 한번에 넘어가는 슬라이드 갯수
@@ -39,9 +45,9 @@ const Slide = () => {
   return (
     <SlideContainer>
       <Slider {...settings}>
-        <SlideContent>A</SlideContent>
-        <SlideContent>B</SlideContent>
-        <SlideContent>C</SlideContent>
+        <SlideContent>{content[0]}</SlideContent>
+        <SlideContent>{content[1]}</SlideContent>
+        <SlideContent>{content[2]}</SlideContent>
       </Slider>
     </SlideContainer>
   );
