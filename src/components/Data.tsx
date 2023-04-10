@@ -1,28 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { getData } from "api";
+import { useQuery } from "react-query";
 
 const Data = () => {
-  const [contentByServer, setContentByServer] = useState<any[]>();
+  // useQuery 사용하기
+  const { data, isLoading, isError } = useQuery("getSeverData", getData);
 
-  // 서버에서 데이터 불러오기
-  const getData = async () => {
-    try {
-      const response = await axios.get("http://localhost:4000/contents");
-      setContentByServer(response.data);
-    } catch (err) {
-      console.log("데이터를 불러오는데 실패했습니다");
-    }
-  };
+  if (isLoading) return <>로딩중입니다</>;
+  if (isError) return <>연결이 원활하지 않습니다</>;
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  console.log("contentByServer: ", contentByServer);
+  console.log("data: ", data);
 
   return (
     <>
-      {contentByServer?.map((item: any) => (
+      {data?.map((item: any) => (
         <div key={item.id}>{item.title}</div>
       ))}
     </>

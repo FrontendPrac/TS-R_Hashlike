@@ -21,6 +21,7 @@
 # 슬라이더 상태 전역에서 관리하기(4.8)
 
 - 패키지 설치 : recoil
+- 리코일 적용 : RecoilRoot
 - atom 생성 : atom
 - atom 구독 : useRecoilState
 
@@ -35,3 +36,10 @@
 - state 생성 : useState
 - 데이터 가져오기 : axios.get, useEffect
 - 화면에 출력 : optional chaining
+
+# 서버 상태 관리하기(4.10)
+
+- 패키지 설치 : react-query
+- 리액트 쿼리 적용 : QueryClient, QueryClientProvider
+- api 생성 : getData()
+- 서버 상태 관리 : useQuery, data, isLoading, isError
